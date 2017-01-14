@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Library>
+  <Books>
+    <Book ISBN="9784048675178">
+      <Title>アクセル・ワールド</Title>
+      <Price>599</Price>
+      <CCode>C0193</CCode>
+    </Book>
+    <Book ISBN="9784621300251">
+      <Title>プログラミング言語Go</Title>
+      <Price>4104</Price>
+      <CCode>C3055</CCode>
+    </Book>
+    <Book ISBN="1234567890123">
+      <Title>テスト</Title>
+      <CCode></CCode>
+    </Book>
+  </Books>
+</Library>
