@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.Runtime.Serialization;
 using System.Xml.Serialization;
 
 namespace XmlTest
@@ -14,13 +15,13 @@ namespace XmlTest
         /// <summary>
         /// 日本文学、小説・物語
         /// </summary>
-        [XmlEnum("C0193")]
+        [EnumMember(Value = "0193")]
         C0193 = 1,
 
         /// <summary>
         /// 電子通信
         /// </summary>
-        [XmlEnum("C3055")]
+        [EnumMember(Value = "3055")]
         C3055
     }
 
@@ -42,7 +43,6 @@ namespace XmlTest
     /// <summary>
     /// 本
     /// </summary>
-    [Serializable]
     public class Book
     {
         /// <summary>
@@ -73,7 +73,15 @@ namespace XmlTest
 
             set
             {
-                Price = !string.IsNullOrEmpty(value) ? int.Parse(value) : default(int?);
+                int result;
+                if (int.TryParse(value, out result))
+                {
+                    Price = result;
+                }
+                else
+                {
+                    Price = default(int?);
+                }
             }
         }
 
@@ -94,17 +102,18 @@ namespace XmlTest
         /// 分類コード
         /// </summary>
         [XmlElement("CCode"), Display(Name = "CCode")]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         [Required, EnumDataType(typeof(CCode))]
         public string CCodeSpecified
         {
             get
             {
-                return CCode.HasValue ? CCode.ToString() : null;
+                return CCode.ToString();
             }
 
             set
             {
-                CCode = Enum.IsDefined(typeof(CCode), value) ? (CCode)Enum.Parse(typeof(CCode), value) : default(CCode);
+                CCode = EnumHelper.ToEnum<CCode>(value);
             }
         }
     }

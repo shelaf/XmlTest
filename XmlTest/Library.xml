@@ -4,16 +4,16 @@
     <Book ISBN="9784048675178">
       <Title>アクセル・ワールド</Title>
       <Price>599</Price>
-      <CCode>C0193</CCode>
+      <CCode>0193</CCode>
     </Book>
     <Book ISBN="9784621300251">
       <Title>プログラミング言語Go</Title>
       <Price>4104</Price>
-      <CCode>C3055</CCode>
+      <CCode>3055</CCode>
     </Book>
-    <Book ISBN="1234567890123">
-      <Title>テスト</Title>
-      <CCode></CCode>
+    <Book ISBN="">
+      <Price>aaa###</Price>
+      <CCode>qqqq</CCode>
     </Book>
   </Books>
 </Library>

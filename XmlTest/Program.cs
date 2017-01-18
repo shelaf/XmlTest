@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.IO;
+using System.Text;
 using System.Xml.Serialization;
 
 namespace XmlTest
@@ -34,6 +35,8 @@ namespace XmlTest
                     {
                         Console.WriteLine(String.Format("ISBN={0}, タイトル={1}, 価格=\\{2}, 分類コード={3}", book.ISBN, book.Title, book.Price, book.CCode.ToString()));
                     }
+
+                    serializer.Serialize(new StreamWriter(Console.OpenStandardOutput(), Encoding.GetEncoding(932)), library);
                 }
                 catch (InvalidOperationException e)
                 {
